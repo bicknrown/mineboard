@@ -6,7 +6,7 @@
 
 import pygame.midi
 import pynput
-from pynput.keyboard import Key, Controller
+from pynput.keyboard import Key, Controller  # imports, yeah
 
 keyboard = Controller()
 piano_list = []  # creates list for midi input (49)
@@ -16,15 +16,15 @@ for i in range(49):
 number_list = []
 for i in range(10):
     i = i
-    number_list.append(str(i))
+    number_list.append(str(i))  # list for numbers 0-9
 
 
-def letter_range(start, stop="{", step=1):  # creates list of keyboard letters
+def letter_range(start, stop="{", step=1):  # creates list of keyboard letters a through y
     for ord_ in range(ord(start.lower()), ord(stop.lower()), step):
         yield chr(ord_)
 
 
-z_list = ['z']
+z_list = ['z']  # for z, planned to be fixed later.
 
 add_list = [',', '.', '/', ';', "'", '[', ']', '-', Key.space, Key.shift_l, Key.esc, Key.ctrl, Key.enter]
 
@@ -36,9 +36,9 @@ def readInput(input_device):  # read midi device input
         if input_device.poll():
             event = input_device.read(1)
             if event[0][0][2] != 0:
-                keyboard.press(type_list[piano_list.index(event[0][0][1])])
+                keyboard.press(type_list[piano_list.index(event[0][0][1])])  # log keypress if velocity is not 0
             if event[0][0][2] == 0:
-                keyboard.release(type_list[piano_list.index(event[0][0][1])])
+                keyboard.release(type_list[piano_list.index(event[0][0][1])])  # disregard keypress if velocity is 0
 
 
 if __name__ == '__main__':  # also reads midi device input
