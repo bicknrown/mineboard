@@ -3,7 +3,7 @@
 
 ### translation layer for midi keyboard to hid keyboard
 
-##this is garbage and i never want to touch this implementation again, thus it is now archived
+## this is garbage and i never want to touch this implementation again, thus it is now archived
 
 the theory is that we use a m-audio keystation 49es to play minecraft,
 what we got so far was a glorified text entry device.
